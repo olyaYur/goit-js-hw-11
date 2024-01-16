@@ -45,15 +45,31 @@ const imgList = document.querySelector('.gallery');
        return {total, totalHits, hits} = value;     
     })
     .then(({hits}) => { const renderImg = hits.reduce((html, hit) => html + `
-     <li>
+     <li class="gallery-list">
         <a class="gallery-link" href="${hit.largeImageURL}">
-          <img src =${hit.webformatURL} alt =${hit.tags} />
-        </>  
+          <img class ="gallery-image" src =${hit.webformatURL} alt =${hit.tags} />
+        </>
+        <span class="gallery-wrapper">
+          <span class="gallery-tit-wrap">  
+            <span class="gallery-subtitle"><b>Likes</b></span>
+            <span class="gallery-sub-title-number">${hit.likes}</span>
+          </span>
+          <span class="gallery-tit-wrap">  
+            <span class="gallery-subtitle"><b>Views</b></span>
+            <span class="gallery-sub-title-number">${hit.views}</span>
+          </span>
+          <span class="gallery-tit-wrap">  
+            <span class="gallery-subtitle"><b>Comments</b></span>
+            <span class="gallery-sub-title-number">${hit.comments}</span>
+          </span>
+          <span class="gallery-tit-wrap">  
+            <span class="gallery-subtitle"><b>Downloads</b></span>
+            <span class="gallery-sub-title-number">${hit.downloads}</span>
+          </span>
+        </span>
      </li> 
-      <li><b>Likes</b> ${hit.likes}</li>
-      <li><b>Views</b> ${hit.views}</li>
-      <li><b>Comments</b> ${hit.comments}</li>
-      <li><b>Downloads</b> ${hit.downloads}</li>
+      
+      
       `, "");
       imgList .innerHTML = renderImg;
 
