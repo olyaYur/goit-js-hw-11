@@ -1,27 +1,31 @@
 "use strict";
 
+// Описаний у документації
+import iziToast from "izitoast";
+// Додатковий імпорт стилів
+import "izitoast/dist/css/iziToast.min.css";
+
+
+
+
 const form = document.querySelector('.form');
 const list = document.querySelector('.list');
-const input = document.querySelector('.input');
-/*let userInputValue = form.event.target.elements.text.value; */
+
+/*var API_KEY = '41835868-9a86cd0490c6a90cb9e6f50a0';
+var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="*/
 
 
 
-
-const searchParams = new URLSearchParams({
+let searchParams = new URLSearchParams({
     key: '41835868-9a86cd0490c6a90cb9e6f50a0',
-    q: 'roses',
+    q: 'dog',
     image_type: 'photo',
     orientation: 'horizontal',
     safesearch: true
   });
 
-let url = `https://pixabay.com/api/?${searchParams}`;
-
-
-  
+let url = `https://pixabay.com/api/?${searchParams}`
 console.log(url);
-
 
 form.addEventListener("click", () => {  
   fetch(url)
@@ -53,8 +57,8 @@ form.addEventListener("click", () => {
     .catch((error) => console.log(error));
 });
 
-/*test code*/
-/*const fetchUsersBtn = document.querySelector(".btn");
+/*
+const fetchUsersBtn = document.querySelector(".btn");
 const userList = document.querySelector(".user-list");
 
 fetchUsersBtn.addEventListener("click", () => {
@@ -80,6 +84,5 @@ fetchUsersBtn.addEventListener("click", () => {
     })
     .catch((error) => console.log(error));
 });
-
 
 */
