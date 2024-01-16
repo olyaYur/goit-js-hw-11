@@ -24,11 +24,8 @@ console.log(url);
 
 
 const form = document.querySelector('.form');
-const list = document.querySelector('.todo-list');
 
-
-
-const imgList = document.querySelector('.images-list');
+const imgList = document.querySelector('.gallery');
     fetch(url)
     
     .then((response) => {
@@ -48,14 +45,17 @@ const imgList = document.querySelector('.images-list');
        return {total, totalHits, hits} = value;     
     })
     .then(({hits}) => { const renderImg = hits.reduce((html, hit) => html + `
-      <li>${hit.likes}</li>
-      <li>${hit.downloads}</li>
-      <li>${hit.comments}</li>
-      <li>${hit.views}</li>
-      <li><img src =${hit.webformatURL} alt =${hit.tags} /></li>
-      
+     <li>
+        <a class="gallery-link" href="${hit.largeImageURL}">
+          <img src =${hit.webformatURL} alt =${hit.tags} />
+        </>  
+     </li> 
+      <li><b>Likes</b> ${hit.likes}</li>
+      <li><b>Views</b> ${hit.views}</li>
+      <li><b>Comments</b> ${hit.comments}</li>
+      <li><b>Downloads</b> ${hit.downloads}</li>
       `, "");
-      imgList.innerHTML = renderImg;
+      imgList .innerHTML = renderImg;
 
       console.log(hits);
     })
@@ -67,19 +67,8 @@ const imgList = document.querySelector('.images-list');
     });
     })
 
+    var lightbox = new SimpleLightbox('.gallery a', {captionsData: "alt", captionDelay: 250});
+
+    lightbox.refresh();
 
 
-
-/*
-  fetch('https://jsonplaceholder.typicode.com/todos')
-    .then((response) => response.json())
-    .then((todos)=>{
-      list.innerHTML = todos.reduce((html, todo) => html + `
-      <li>${todo.title}</li>
-      `, "");
-      console.log(todos);
-    })
-    .catch((error) =>{
-       console.log(error)
-    })
-*/
