@@ -1,28 +1,26 @@
-import{i,S as c}from"./assets/vendor-46aac873.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const a of e)if(a.type==="childList")for(const o of a.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&s(o)}).observe(document,{childList:!0,subtree:!0});function l(e){const a={};return e.integrity&&(a.integrity=e.integrity),e.referrerpolicy&&(a.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?a.credentials="include":e.crossorigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function s(e){if(e.ep)return;e.ep=!0;const a=l(e);fetch(e.href,a)}})();let p=new URLSearchParams({key:"41835868-9a86cd0490c6a90cb9e6f50a0",q:"dog",image_type:"photo",orientation:"horizontal",safesearch:!0}),n=`https://pixabay.com/api/?${p}`;console.log(n);document.querySelector(".form");const g=document.querySelector(".gallery");fetch(n).then(r=>{if(!r.ok)throw new Error("Sorry, there are no images matching your search query. Please try again!");return r.json()}).then(r=>{let{total:t,totalHits:l,hits:s}=r;return console.log(r),console.log(t),console.log(l),console.log(s),{total:t,totalHits:l,hits:s}=r}).then(({hits:r})=>{const t=r.reduce((l,s)=>l+`
+import{S as c,i as u}from"./assets/vendor-46aac873.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const l of r.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&t(l)}).observe(document,{childList:!0,subtree:!0});function o(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerpolicy&&(r.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?r.credentials="include":e.crossorigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function t(e){if(e.ep)return;e.ep=!0;const r=o(e);fetch(e.href,r)}})();const p=document.querySelector(".form"),m=document.querySelector("input"),y=document.querySelector(".gallery");document.querySelector(".loader");p.addEventListener("submit",g);function g(n){n.preventDefault();let s=m.value,t=`https://pixabay.com/api/?${new URLSearchParams({key:"41835868-9a86cd0490c6a90cb9e6f50a0",q:s,image_type:"photo",orientation:"horizontal",safesearch:!0})}`;fetch(t).then(e=>{if(!e.ok)throw new Error("Sorry, there are no images matching your search query. Please try again!");return e.json()}).then(e=>e).then(({hits:e})=>{const r=e.reduce((i,a)=>i+`
      <li class="gallery-list">
-        <a class="gallery-link" href="${s.largeImageURL}">
-          <img class ="gallery-image" src =${s.webformatURL} alt =${s.tags} />
+        <a class="gallery-link" href="${a.largeImageURL}">
+          <img class ="gallery-image" src =${a.webformatURL} alt =${a.tags} />
         </>
         <span class="gallery-wrapper">
           <span class="gallery-tit-wrap">  
             <span class="gallery-subtitle"><b>Likes</b></span>
-            <span class="gallery-sub-title-number">${s.likes}</span>
+            <span class="gallery-sub-title-number">${a.likes}</span>
           </span>
           <span class="gallery-tit-wrap">  
             <span class="gallery-subtitle"><b>Views</b></span>
-            <span class="gallery-sub-title-number">${s.views}</span>
+            <span class="gallery-sub-title-number">${a.views}</span>
           </span>
           <span class="gallery-tit-wrap">  
             <span class="gallery-subtitle"><b>Comments</b></span>
-            <span class="gallery-sub-title-number">${s.comments}</span>
+            <span class="gallery-sub-title-number">${a.comments}</span>
           </span>
           <span class="gallery-tit-wrap">  
             <span class="gallery-subtitle"><b>Downloads</b></span>
-            <span class="gallery-sub-title-number">${s.downloads}</span>
+            <span class="gallery-sub-title-number">${a.downloads}</span>
           </span>
         </span>
      </li> 
-      
-      
-      `,"");g.innerHTML=t,console.log(r)}).catch(r=>{i.error({position:"bottomCenter",title:"Error",message:"Sorry, there are no images matching your search query. Please try again!"})});var u=new c(".gallery a",{captionsData:"alt",captionDelay:250});u.refresh();
+      `,"");y.innerHTML=r,new c(".gallery a",{captionsData:"alt",captionDelay:250,nav:!0,close:!0,enableKeyboard:!0,docClose:!0}).refresh()}).catch(e=>{u.error({position:"bottomCenter",title:"Error",message:"Sorry, there are no images matching your search query. Please try again!"})})}
 //# sourceMappingURL=commonHelpers.js.map
