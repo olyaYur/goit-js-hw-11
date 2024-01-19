@@ -27,7 +27,6 @@ const form = document.querySelector('.form');
 
 const imgList = document.querySelector('.gallery');
     fetch(url)
-    
     .then((response) => {
       if(!response.ok) {
         throw new Error(
