@@ -127,6 +127,7 @@ justify-content: space-around;
   position: relative;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+  margin-bottom: 15px;
 }
 .loader::after {
   content: '';  
