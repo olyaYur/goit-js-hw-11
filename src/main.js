@@ -16,9 +16,19 @@ const inputField = document.querySelector('input');
 const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 
+const lightbox = new SimpleLightbox('.gallery a', 
+      {captionsData: "alt",
+       captionDelay: 250,
+       nav: true,
+       close: true,
+       enableKeyboard: true,
+       docClose: true,
+      });
+
 formSearch.addEventListener("submit", searchImages);
 
 loader.style.display = 'none';
+
 function searchImages(event){
   event.preventDefault();
   let name = inputField.value;
@@ -77,15 +87,6 @@ let url = `https://pixabay.com/api/?${searchParams}`
      </li> 
       `, "");
       gallery.innerHTML = renderImg;
-
-      const lightbox = new SimpleLightbox('.gallery a', 
-      {captionsData: "alt",
-       captionDelay: 250,
-       nav: true,
-       close: true,
-       enableKeyboard: true,
-       docClose: true,
-      });
 
     lightbox.refresh();
     })
