@@ -1,4 +1,4 @@
-"use strict";
+
 
 // Описаний у документації
 import iziToast from "izitoast";
@@ -50,14 +50,19 @@ function searchImages(event){
 let url = `https://pixabay.com/api/?${searchParams}`
 
     fetch(url)
-    .then((response) => {
-      if(!response.ok) {
-        throw new Error(
-         'Sorry, there are no images matching your search query. Please try again!',
-      ); 
+   .then(response => {
+      loader.style.display = 'none';
+      if (!response.ok) {
+        throw new Error('Request is not ok');
       }
+
       return response.json();
     })
+    .then(value)
+
+
+  
+
     .then((value) => {
       let {total, totalHits, hits} = value;
        return {total, totalHits, hits} = value;     
