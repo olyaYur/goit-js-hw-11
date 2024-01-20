@@ -21,6 +21,23 @@ formSearch.addEventListener("submit", searchImages);
 function searchImages(event){
   event.preventDefault();
   let name = inputField.value;
+  
+  showLoader();
+
+  if (name === '') {
+    closeLoader();
+
+    iziToast.error({
+      title: 'Error',
+      timeout: '2000',
+      message:
+        'Sorry, there are no images matching your search query. Please try again!',
+      messageColor: '#FAFAFB',
+      backgroundColor: '#EF4040',
+      position: 'topRight',
+    });
+    return;
+  }
 
   let searchParams = new URLSearchParams({
     key: '41835868-9a86cd0490c6a90cb9e6f50a0',
@@ -94,5 +111,10 @@ let url = `https://pixabay.com/api/?${searchParams}`
 
 } 
 
-
+function showLoader() {
+  loader.style.display = 'block';
+}
+function closeLoader() {
+  loader.style.display = 'none';
+}
 
