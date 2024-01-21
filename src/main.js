@@ -26,17 +26,16 @@ const lightbox = new SimpleLightbox('.gallery a',
       });
 
 formSearch.addEventListener("submit", searchImages);
-
-loader.style.display = 'none';
+closeLoader();
 
 function searchImages(event) {
   event.preventDefault();
 
   let name = inputField.value;
-
-  gallery.innerHTML = '';
-
+  
   showLoader();
+  gallery.innerHTML = '';
+  
 
   if (name === '') {
     closeLoader();
@@ -66,7 +65,7 @@ function searchImages(event) {
 
   fetch(url)
     .then(response => {
-      loader.style.display = 'none';
+      closeLoader();
       if (!response.ok) {
         throw new Error('Request is not ok');
       }
@@ -146,3 +145,4 @@ function showLoader() {
 function closeLoader() {
   loader.style.display = 'none';
 }
+
